@@ -1,15 +1,15 @@
 {
     "openapi": "3.0.3",
     "info": {
-        "title": "PI-Backend",
-        "description": "API Rest da locadora de carros",
+        "title": "PI-Backend_final_project",
+        "description": "API Rest da concessionaria de motos",
         "version": "0.0.1"
     },
     "paths": {
         "/estoque": {
-            "description": "Estoque de carros",
+            "description": "Estoque de motos",
             "get": {
-                "description": "lista em estoque na locadora",
+                "description": "lista em estoque na Concessionária",
                 "tags": ["Estoque"],
                 "responses": {
                     "200": {
@@ -30,7 +30,7 @@
         },
         "/estoque/{id}": {
             "get": {
-                "description": "Exibe seu carro em estoque pelo ID",
+                "description": "Exibe sua moto em estoque pelo ID",
                 "tags":["Estoque"],
                 "parameters": [
                     {
@@ -109,7 +109,7 @@
                         "content": {}
                     },
                     "404": {
-                        "description": "Não encontramos seu carro"
+                        "description": "Não encontramos sua moto"
                     }
                 }
             }
@@ -136,11 +136,11 @@
                 }
             }
         },
-        "/alugue": {
-            "description": "alugue seu carro",
+        "/compre": {
+            "description": "compre sua moto",
             "get": {
-                "description": "lista de carros",
-                "tags":["alugue"],
+                "description": "lista de motos",
+                "tags":["compre"],
                 "responses": {
                     "200": {
                         "description": "Sucesso",
@@ -149,7 +149,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/alugue"
+                                        "$ref": "#/components/schemas/compre"
                                     }
                                 }
                             }
@@ -158,10 +158,10 @@
                 }
             }
         },
-        "/alugue/{id}": {
+        "/compre/{id}": {
             "get": {
                 "description": "Exibe uma opção pelo ID",
-                "tags":["alugue"],
+                "tags":["compre"],
                 "parameters": [
                     {
                         "name": "id",
@@ -178,7 +178,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "$ref": "#/components/schemas/alugue"
+                                    "$ref": "#/components/schemas/compre"
                                 }
                             }
                         }
@@ -189,28 +189,28 @@
                 }
             }
         },
-        "/criar/alugue": {
+        "/criar/compre": {
             "post": {
-                "description": "Cria um aluguel de carros",
-                "tags": ["alugue"],
+                "description": "Cria uma requisição de compra de moto",
+                "tags": ["compre"],
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/alugue"
+                                "$ref": "#/components/schemas/compre"
                             }
                         }
                     }
                 },
                 "responses": {
                     "201": {
-                        "description": "carro alugado ",
+                        "description": "moto comprada",
                         "content": {}
                     }
                 }
              } 
         },
-        "/atualizar/alugue/{id}": {
+        "/atualizar/compre/{id}": {
             "put": {
                 "parameters": [
                     {
@@ -222,20 +222,20 @@
                         }
                     }
                 ],
-                "description": "Atualizar carro",
-                "tags": ["alugue"],
+                "description": "Atualizar moto",
+                "tags": ["compre"],
                 "requestBody": {
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/alugue"
+                                "$ref": "#/components/schemas/compre"
                             }
                         }
                     }
                 },
                 "responses": {
                     "201": {
-                        "description": "aluguel cancelado com sucesso",
+                        "description": "compra cancelada com sucesso",
                         "content": {}
                     },
                     "404": {
@@ -244,10 +244,10 @@
                 }
             }
         },
-        "/excluir/alugue/{id}": {
+        "/excluir/compre/{id}": {
             "delete": {
-                "description": "Deletar carro que não existe mais, pelo ID",
-                "tags":["alugue"],
+                "description": "Deletar moto que não existe mais, pelo ID",
+                "tags":["compre"],
                 "parameters": [
                     {
                         "name": "id",
@@ -260,7 +260,7 @@
                 ],
                 "responses": {
                     "201": {
-                        "description": "carro cancelado com sucesso",
+                        "description": "moto cancelada com sucesso",
                         "content": {}
                     }
                 }
@@ -274,28 +274,28 @@
                 "properties": {
                     "retirada": {
                         "type": "string",
-                        "example": "2014/15"
+                        "example": "2013/14"
                     },
                     "Modelo": {
                         "type": "object",
                         "properties": {
                             "nome": {
                                 "type": "string",
-                                "example": "carro 1"
+                                "example": "moto 1"
                             }
                         }
                     },
                     "avaliação": {
                         "type": "string",
-                        "example": "6.8"
+                        "example": "8.8"
                     },
                     "Preço": {
                         "type": "string",
-                        "example": "R$220,00"
+                        "example": "R$52.000,00"
                     }
                 }
             },
-            "alugue": {
+            "compre": {
                 "type": "object",
                 "properties": {
                     "compacto": {
@@ -308,7 +308,7 @@
                     },
                     "valor": {
                         "type": "string",
-                        "example": "R$150,00"
+                        "example": "R$38.000,00"
                     },
                     "situação": {
                         "type": "string",

@@ -3,13 +3,13 @@ const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
 const estoqueSchema = new Schema({
-    compacto: {
+    Email: {
         type: String,
         required: [true, 'Email não informado'],
         trim: true,
         
     },
-    Modelo: {
+    Senha: {
         type: String,
         required: [true, 'Senha não informada'],
         trim: true,
@@ -24,7 +24,7 @@ const estoqueSchema = new Schema({
 
     },
 
-    Preco: {
+    Senha: {
         type: String,
         required: [true, 'Senha não informada'],
         trim: true,

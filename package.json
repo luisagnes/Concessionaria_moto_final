@@ -1,9 +1,11 @@
 {
-  "name": "api_locadora_de_carro",
+  "name": "api_concessionaria_moto",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "jest -watchAll"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -14,6 +16,7 @@
     "mongoose": "^6.7.2",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.20",
+    "swagger-ui": "^4.15.5",
     "swagger-ui-express": "^4.5.0"
   }
 }
