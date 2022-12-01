@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const Schema = mongoose.Schema;
 
-const alugueSchema = new Schema({
+const compreSchema = new Schema({
     modelo:{
         type: String,
-        required: [true, 'Informar modelo do veiculo'],
+        required: [true, 'Informar modelo da moto'],
         trim: true,
     },
     retirada: {
@@ -14,16 +14,9 @@ const alugueSchema = new Schema({
         trim: true,
         
     },
-    devolucao: {
-        type: String,
-        required: [true, 'Informar data de devolução'],
-        trim: true,
-        
-
-    },
     valor: {
         type: String,
-        required: [true, 'Informar valor total do aluguel'],
+        required: [true, 'Informar valor total da compra'],
         trim: true,
         
 
@@ -31,10 +24,10 @@ const alugueSchema = new Schema({
 
     situacao: {
         type: String,
-        required: [true, 'Informar se ja foi pago ou não'],
+        required: [true, 'Informar se o pagamento foi realizado ou não'],
         trim: true,
         
     }
 })
 
-module.exports = mongoose.model("Aluguel", alugueSchema);
+module.exports = mongoose.model("Compra", compreSchema);

@@ -1,18 +1,19 @@
 const e = require('express');
 const express = require('express');
+const autenticacao = require('../middlewares/authMiddleware')
 const router = express.Router();
 const estoqueController = require('../controllers/estoqueController');
 
 const app = express();
 
-router.get('/', estoqueController.listarEstoque );
+router.get('/', autenticacao, estoqueController.listarEstoque );
 
-router.get('/:id', estoqueController.listarEstoquesPorId);
+router.get('/:id', autenticacao, estoqueController.listarEstoquesPorId);
 
-router.post('/estoque', estoqueController.criarEstoque);
+router.post('/', autenticacao, estoqueController.criarEstoque);
 
-router.put('/estoque/:id', estoqueController.atualizarEstoques);
+router.put('/:id', autenticacao, estoqueController.atualizarEstoques);
 
-router.delete('/estoque/:id', estoqueController.removerEstoques);
+router.delete('/:id', autenticacao, estoqueController.removerEstoques);
 
 module.exports = router;
