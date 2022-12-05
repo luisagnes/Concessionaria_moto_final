@@ -1,21 +1,22 @@
 var express = require('express');
 const mongoose = require('mongoose');
 var path = require('path');
-const config = require('./config/env.json')
+const config = require('./src/config/env.json')
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
+const swaggerDocument = require('./src/swagger.json');
 
-var indexRouter = require('./routes/index');
-var routerCompre = require('./routes/compreRouter');
-var routerEstoque = require('./routes/estoqueRouter');
+var indexRouter = require('./src/routes/index');
+var routerCompre = require('./src/routes/compreRouter');
+var routerEstoque = require('./src/routes/estoqueRouter');
+var routerlogar = require('./src/routes/auth');
 
-var app = express();
+const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
 app.use('/concessionaria-moto', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/', indexRouter);
+app.use('/auth', routerlogar);
 app.use('/compra', routerCompre);
 app.use('/estoque', routerEstoque);
 
